@@ -1,0 +1,66 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: whitesmoke;
+}
+
+#container {
+    border: 2px solid black;
+    width: 800px;
+    height: 800px;
+    margin: auto;
+    margin-top: 10px;
+    display: flex;
+    align-items: space-around;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card {
+    border: 2px solid black;
+    width: 160px;
+    height: 160px;
+    margin: 10px;
+    display: inline-block;
+}
+
+.pair1 {
+    background-image: url("img/1.jpg");
+}
+
+.pair2 {
+    background-image: url("img/2.jpg");
+}
+
+.pair3 {
+    background-image: url("img/3.jpg");
+}
+
+.pair4 {
+    background-image: url("img/4.jpg");
+}
+
+.pair5 {
+    background-image: url("img/5.jpg");
+}
+
+.pair6 {
+    background-image: url("img/6.jpg");
+}
+
+.pair7 {
+    background-image: url("img/7.jpg");
+}
+
+.pair8 {
+    background-image: url("img/8.jpg");
+}
+
+.card.disabled {
+	pointer-events: none;
+}
+
+.card.closed {
+    background-image: url("img/cover.jpg");
+    background-size: cover;
+}
