@@ -1,28 +1,86 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: whitesmoke;
+    background-color: #FF7F6F;
+}
+
+.content {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+}
+
+.game-name {
+    font-family: 'Kanit', sans-serif;
+    font-weight: 900;
+    font-size: 54px;
+    display: inline-block;
+    margin: 0px;
+    color: #00FFD3;
+    text-shadow: 5px 5px #77618C;
+}
+
+.game-name span {
+    color: rgb(161, 120, 202);
+    text-shadow: 5px 5px #8C0E03;
+    ;
+}
+
+.players {
+    display: flex;
+    align-items: flex-end;
+}
+
+.players p {
+    display: inline-block;
+    font-family: 'Kanit', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    padding: 10px;
+    margin: 0px;
+    color: #8C0E03;
+    text-shadow: 1px 1px rgb(61, 7, 2);
+}
+
+.players .current-player {
+    transition-delay: 1s;
+    transition-property: color, font-weight, text-shadow;
+    color: rgb(255, 71, 46);
+    text-shadow: 2px 2px rgb(61, 7, 2);
+    font-weight: 900;
 }
 
 #container {
-    border: 2px solid black;
-    width: 800px;
-    height: 800px;
-    margin: auto;
+    border-radius: 20px;
+    background-color:#7AFFD3;
+    width: 600px;
+    height: 600px;
     margin-top: 10px;
     display: flex;
-    align-items: space-around;
-    justify-content: space-around;
+    align-content: space-evenly;
+    justify-content: space-evenly;
     flex-wrap: wrap;
+    -webkit-box-shadow: 15px 15px 0px 0px #8C0E03;
+    -moz-box-shadow: 15px 15px 0px 0px #8C0E03;
+    box-shadow: 15px 15px 0px 0px#8C0E03;
 }
 
 .card {
-    border: 2px solid black;
-    width: 160px;
-    height: 160px;
-    margin: 10px;
+    border-radius: 10px;
+    width: 130px;
+    height: 130px;
     display: inline-block;
     background-size: cover;
+    box-shadow: 5px 5px 0px 0px#77618C;
 }
 
 .pair1 {
@@ -68,8 +126,7 @@ body {
 }
 
 .card.used {
-    color: gray;
-    background-color: gray;
+    color: #00FFD3;
+    background-color: #00FFD3;
     background-image: none;
-    border-color: gray;
 }

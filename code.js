@@ -1,3 +1,5 @@
+// porządki w kodzie!
+
 class Player  {
     constructor(name, points) {
       this.name = name;
@@ -7,6 +9,8 @@ class Player  {
 
 const cards = Array.from(document.querySelectorAll(".card"));
 let cardsFromThisTurn = new Array();
+let playerText1 = document.querySelector(".player1");
+let playerText2 = document.querySelector(".player2");
 
 function shuffleCards() {
     var numbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
@@ -51,6 +55,7 @@ function handleWonTurn() {
     window.cardsToGuess -= cardsFromThisTurn.length;
     cardsFromThisTurn.length = 0;
     checkIfGameEnded();
+    updatePointsOnBoard();
 }
 
 function handleLostTurn() {
@@ -65,6 +70,25 @@ function handleLostTurn() {
 
 function changePlayer() {
     window.currentPlayer = (window.currentPlayer === player1) ? window.player2 : window.player1;
+    changePlayerDisplay();
+}
+
+function changePlayerDisplay() {
+    playerText1.classList.toggle("current-player");
+    playerText2.classList.toggle("current-player");
+}
+
+function updatePointsOnBoard() {
+    let span1 = document.createElement("span");
+    let span2 = document.createElement("span");
+    let score1 = document.createTextNode(window.player1.points);
+    let score2 = document.createTextNode(window.player2.points);
+    span1.appendChild(score1);
+    span2.appendChild(score2);
+
+    
+    playerText1.replaceChild(span1, playerText1.querySelector("span"));
+    playerText2.replaceChild(span2, playerText2.querySelector("span"));
 }
 
 function checkIfGameEnded() {
@@ -96,6 +120,7 @@ function startGame() {
     window.currentPlayer = player1;
     window.cardsToGuess = cards.length;
     shuffleCards();
+    updatePointsOnBoard();
     handleClick();
 }
 
