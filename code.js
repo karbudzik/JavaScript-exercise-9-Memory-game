@@ -125,3 +125,5 @@ function startGame() {
 }
 
 window.addEventListener("load", startGame());
+
+// podpiąć button play agsin

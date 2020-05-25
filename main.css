@@ -63,7 +63,7 @@ body {
     border-radius: 20px;
     background-color:#7AFFD3;
     width: 600px;
-    height: 600px;
+    height: 580px;
     margin-top: 10px;
     display: flex;
     align-content: space-evenly;
@@ -129,4 +129,50 @@ body {
     color: #00FFD3;
     background-color: #00FFD3;
     background-image: none;
+}
+
+.message {
+    position: absolute;
+    display: inline-block;
+    margin-top: 45vh;
+    margin-left: 20vw;
+    width: 60vw;
+    background-color: #FF7F6F;
+    text-align: center;
+    transition-delay: 1s;
+    transition-property: all;
+}
+
+.message-content {
+    font-family: 'Kanit', sans-serif;
+    font-weight: 900;
+    font-size: 34px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: rgb(255, 71, 46);
+    text-shadow: 2px 2px rgb(61, 7, 2);
+}
+
+button {
+    margin-bottom: 30px;
+    font-family: 'Kanit', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    padding: 10px 20px;
+    color:#77618C;
+    background-color: #7AFFD3;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 4px 4px 0px 0px#77618C;
+    transition: all 0.2s;
+}
+
+button:hover {
+    background-color: #00FFD3;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.hidden-message {
+    display: none;
 }
