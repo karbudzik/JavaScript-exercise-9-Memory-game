@@ -1,4 +1,4 @@
-// porządki w kodzie!
+// custom-made objects:
 
 class Player  {
     constructor(name, points) {
@@ -7,15 +7,52 @@ class Player  {
     }
 }
 
+// global variables:
+
 const cards = Array.from(document.querySelectorAll(".card"));
 let cardsFromThisTurn = new Array();
 let playerText1 = document.querySelector(".player1");
 let playerText2 = document.querySelector(".player2");
 
+// functions:
+
+window.addEventListener("load", playGame);
+
+function playGame() {
+    resetScoreAndPlayers();
+    clearScreen();
+    shuffleCards();
+    updatePointsOnBoard();
+    handleClick();
+}
+
+function resetScoreAndPlayers() {
+    window.player1 = new Player("player1", 0);
+    window.player2 = new Player("player2", 0);
+    window.currentPlayer = player1;
+    window.cardsToGuess = cards.length;
+}
+
+function clearScreen() {
+    hideResultMessage();
+    makeCardsPlayable();
+}
+
+function hideResultMessage() {
+    document.querySelector(".message").classList.add("hidden-message");
+}
+
+function makeCardsPlayable() {
+    for (var i = 0; i < cards.length; i++){
+        cards[i].classList.add("closed");
+        cards[i].classList.remove("used");
+        cards[i].classList.remove("disabled");
+    };
+}
+
 function shuffleCards() {
-    var numbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
+    var numbers = Array.from([1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8]);
     for (var card of cards) {
-        numbers = Array.from(numbers);
         var number = numbers[Math.floor(Math.random() * numbers.length)];
         var numberIndex = numbers.indexOf(number);
         card.classList.add("pair" + number);
@@ -25,7 +62,33 @@ function shuffleCards() {
     }
 }
 
+function updatePointsOnBoard() {
+    let span1 = document.createElement("span");
+    let span2 = document.createElement("span");
+    let score1 = document.createTextNode(window.player1.points);
+    let score2 = document.createTextNode(window.player2.points);
+    span1.appendChild(score1);
+    span2.appendChild(score2);    
+    playerText1.replaceChild(span1, playerText1.querySelector("span"));
+    playerText2.replaceChild(span2, playerText2.querySelector("span"));
+}
+
+function handleClick() {
+    for (var i = 0; i < cards.length; i++){
+        cards[i].addEventListener("click", displayCard);
+        cards[i].addEventListener("click", makeMove);
+    };
+}
+
+
+
+
+
+
+
+
 function displayCard() {
+    console.log("go into displayCard() function");
     this.classList.toggle("closed");
     this.classList.toggle("disabled");
 }
@@ -78,18 +141,7 @@ function changePlayerDisplay() {
     playerText2.classList.toggle("current-player");
 }
 
-function updatePointsOnBoard() {
-    let span1 = document.createElement("span");
-    let span2 = document.createElement("span");
-    let score1 = document.createTextNode(window.player1.points);
-    let score2 = document.createTextNode(window.player2.points);
-    span1.appendChild(score1);
-    span2.appendChild(score2);
 
-    
-    playerText1.replaceChild(span1, playerText1.querySelector("span"));
-    playerText2.replaceChild(span2, playerText2.querySelector("span"));
-}
 
 function checkIfGameEnded() {
     if (window.cardsToGuess <= 0) {
@@ -98,32 +150,33 @@ function checkIfGameEnded() {
 }
 
 function announceWinner() {
+    let message;
     if (window.player1.points > window.player2.points) {
-        console.log("Winner is " + window.player1.name)
+        message = "Winner is " + window.player1.name + "!";
     } else if (window.player2.points > window.player1.points) {
-        console.log("Winner is " + window.player2.name)
+        message = "Winner is " + window.player2.name + "!";
     } else {
-        console.log("It's a tie!");
+        message = "It's a tie!"
     }
+    console.log(message);
+    let messagePlaceholder = document.querySelector(".message");
+    console.log(messagePlaceholder);
+    messagePlaceholder.classList.remove("hidden-message");
+    console.log(messagePlaceholder);
+
+    let tryAgainButton = document.querySelector("#try-again-button");
+    console.log(tryAgainButton);
+
+    tryAgainButton.addEventListener("click", playGame);
 }
 
-function handleClick() {
-    for (var i = 0; i < cards.length; i++){
-        cards[i].addEventListener("click", displayCard);
-        cards[i].addEventListener("click", makeMove);
-    };
-}
 
-function startGame() {
-    window.player1 = new Player("player1", 0);
-    window.player2 = new Player("player2", 0);
-    window.currentPlayer = player1;
-    window.cardsToGuess = cards.length;
-    shuffleCards();
-    updatePointsOnBoard();
-    handleClick();
-}
 
-window.addEventListener("load", startGame());
 
+
+
+
+// wyświetlanie komunikatu
 // podpiąć button play agsin
+// formatowanie stringów
+// consol logi usunąć

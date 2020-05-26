@@ -83,38 +83,6 @@ body {
     box-shadow: 5px 5px 0px 0px#77618C;
 }
 
-.pair1 {
-    background-image: url("img/1.jpg");
-}
-
-.pair2 {
-    background-image: url("img/2.jpg");
-}
-
-.pair3 {
-    background-image: url("img/3.jpg");
-}
-
-.pair4 {
-    background-image: url("img/4.jpg");
-}
-
-.pair5 {
-    background-image: url("img/5.jpg");
-}
-
-.pair6 {
-    background-image: url("img/6.jpg");
-}
-
-.pair7 {
-    background-image: url("img/7.jpg");
-}
-
-.pair8 {
-    background-image: url("img/8.jpg");
-}
-
 .card.disabled {
 	pointer-events: none;
 }
@@ -175,4 +143,36 @@ button:hover {
 
 .hidden-message {
     display: none;
+}
+
+.pair1 {
+    background-image: url("img/1.jpg");
+}
+
+.pair2 {
+    background-image: url("img/2.jpg");
+}
+
+.pair3 {
+    background-image: url("img/3.jpg");
+}
+
+.pair4 {
+    background-image: url("img/4.jpg");
+}
+
+.pair5 {
+    background-image: url("img/5.jpg");
+}
+
+.pair6 {
+    background-image: url("img/6.jpg");
+}
+
+.pair7 {
+    background-image: url("img/7.jpg");
+}
+
+.pair8 {
+    background-image: url("img/8.jpg");
 }
