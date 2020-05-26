@@ -1,7 +1,7 @@
 # JavaScript exercise 9 - Memory game
 My 9th project in JavaScript, but first after 1-year break from learning JS (a warm-up exercise).
 
-80's themed memory game - [Click here to play](https://karbudzik.github.io/JavaScript-exercise-9-memory-game/index.html).
+80's themed memory game - [Click here to play](https://karbudzik.github.io/JavaScript-exercise-9-Memory-game/index.html).
 Script developed by me, with supervision from Codecool mentors.
 
 ## Screenshots
