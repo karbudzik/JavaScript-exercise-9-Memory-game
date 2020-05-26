@@ -80,15 +80,7 @@ function handleClick() {
     };
 }
 
-
-
-
-
-
-
-
 function displayCard() {
-    console.log("go into displayCard() function");
     this.classList.toggle("closed");
     this.classList.toggle("disabled");
 }
@@ -97,15 +89,9 @@ function makeMove() {
     cardsFromThisTurn.push(this);
     if (cardsFromThisTurn.length === 2) {
         if (getComputedStyle(cardsFromThisTurn[0]).backgroundImage === getComputedStyle(cardsFromThisTurn[1]).backgroundImage) {
-            
-            console.log("It was won turn of " + window.currentPlayer.name + "with points " + window.currentPlayer.points + " +2");
             handleWonTurn()
-            console.log(window.cardsToGuess + " cards to guess left");
         } else {
-            
-            console.log("It was lost turn of " + window.currentPlayer.name + "with points " + window.currentPlayer.points);
             handleLostTurn()
-            console.log(window.cardsToGuess + " cards to guess left");
         }
     }
 }
@@ -113,7 +99,6 @@ function makeMove() {
 function handleWonTurn() {
     cardsFromThisTurn[0].classList.add("used");
     cardsFromThisTurn[1].classList.add("used");
-
     window.currentPlayer.points += cardsFromThisTurn.length;
     window.cardsToGuess -= cardsFromThisTurn.length;
     cardsFromThisTurn.length = 0;
@@ -122,13 +107,18 @@ function handleWonTurn() {
 }
 
 function handleLostTurn() {
-    cardsFromThisTurn[0].classList.remove("disabled");
-    cardsFromThisTurn[1].classList.remove("disabled");
-    cardsFromThisTurn[0].classList.add("closed");
-    cardsFromThisTurn[1].classList.add("closed");
-
+    for (var i = 0; i < cardsFromThisTurn.length; i++) {
+        cardsFromThisTurn[i].classList.remove("disabled");
+        cardsFromThisTurn[i].classList.add("closed");
+    }
     cardsFromThisTurn.length = 0;
     changePlayer();
+}
+
+function checkIfGameEnded() {
+    if (window.cardsToGuess <= 0) {
+        handleGameEnd();
+    }
 }
 
 function changePlayer() {
@@ -141,37 +131,32 @@ function changePlayerDisplay() {
     playerText2.classList.toggle("current-player");
 }
 
-
-
-function checkIfGameEnded() {
-    if (window.cardsToGuess <= 0) {
-        announceWinner();
-    }
+function handleGameEnd() {
+    showMessage(getMessage());
+    offerToTryAgain();
 }
 
-function announceWinner() {
+function getMessage() {
     let message;
     if (window.player1.points > window.player2.points) {
-        message = "Winner is " + window.player1.name + "!";
+        message = `Winner is ${window.player1.name} !`;
     } else if (window.player2.points > window.player1.points) {
-        message = "Winner is " + window.player2.name + "!";
+        message = `Winner is ${window.player2.name} !`;
     } else {
         message = "It's a tie!"
     }
-    console.log(message);
-    let messagePlaceholder = document.querySelector(".message");
-    console.log(messagePlaceholder);
-    messagePlaceholder.classList.remove("hidden-message");
-    console.log(messagePlaceholder);
-
-    let tryAgainButton = document.querySelector("#try-again-button");
-    console.log(tryAgainButton);
-
-    tryAgainButton.addEventListener("click", playGame);
+    return message;
 }
 
+function showMessage(message) {
+    document.querySelector(".message-content").innerText = message;
+    document.querySelector(".message").classList.remove("hidden-message");
+}
 
-
+function offerToTryAgain() {
+    let tryAgainButton = document.querySelector("#try-again-button");
+    tryAgainButton.addEventListener("click", playGame);
+}
 
 
 
